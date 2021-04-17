@@ -217,17 +217,38 @@ public class Interface implements ActionListener {
             input.setText("<html></html>");
             output.setText("<html></html>");
         }
-        else if(actionEvent.getSource().equals(clear)){
+        else if(actionEvent.getSource().equals(equal)){
+            //储存输入的二进制数
             List<String> list = new ArrayList<>();
-            String s= input.getText();
+            String st= input.getText();
+            String s = st.substring(st.indexOf("<html>")+6,st.indexOf("</html>"));
+            System.out.println(s);
+            //通过flag来判断是否为指定位数的二进制数
             int flag = 0;
-            for(int i=0;i<s.length();i++){
-                if(s.charAt(i)!='0'&&s.charAt(i)!='1'){
-                    list.add(s.substring(i-flag,i));
+            for(int i=0;i<s.length();i++) {
+                if (s.charAt(i) != '0' && s.charAt(i) != '1'||i==s.length()-1) {
+                    list.add(s.substring(i - flag, i));
                     flag = 0;
                 }
                 flag++;
             }
+            //测试是否可以真确显示
+            /*StringBuilder stringBuilder = new StringBuilder();
+            for(String str:list){
+                stringBuilder.append(str).append(" ");
+            }
+            StringBuilder sb= new StringBuilder(output.getText());
+            System.out.println(stringBuilder.toString());
+            int i=sb.indexOf("</html>");
+            System.out.println(i);
+            sb.insert(i,stringBuilder.toString());
+            output.setText(sb.toString());*/
+            //进行运算
+            Operation operation = new Operation();
+            StringBuilder sb= new StringBuilder(output.getText());
+            int i=sb.indexOf("</html>");
+            sb.insert(i,operation.operation(list));
+            output.setText(sb.toString());
             //将字符串拼接显示
             //output.setText();
         }
