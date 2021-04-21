@@ -6,17 +6,9 @@ import java.util.Scanner;
  */
 public class Main{
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        int n;
-        n = scanner.nextInt();
-        for (int i = 0; i < n; i++) {
-            int m = scanner.nextInt();
-            int sum = 0;
-            for(int j=0;j<m;j++){
-                sum+=scanner.nextInt();
-            }
-            System.out.println(sum);
-            System.out.println();
-        }
+       String s = "1111111111111111111111111111111";
+        System.out.println(Integer.valueOf(s,2).toString());
+        int a = -65535;
+        System.out.println(Integer.toBinaryString(a));
     }
 }
