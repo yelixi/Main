@@ -24,11 +24,12 @@ public class Operation {
     }
 
     public String operation(List<String> list) {
-        for (String s : list) {
+        for (int i=0;i<list.size();i++) {
+            String s = list.get(i);
             if (s.startsWith("0") || s.startsWith("1")) {
                 if(s.startsWith("1")){
                     list.remove(s);
-                    list.add(list.indexOf(s),s.replaceFirst("1","-"));
+                    list.add(i,s.replaceFirst("1","-"));
                 }
                 else if (s.length() > Interface.bit)
                     throw new RuntimeException(s + "超过了" + Interface.bit + "位数的限制");
@@ -175,7 +176,7 @@ public class Operation {
             Interface.P = true;
         if(s.startsWith("1"))
             Interface.S = true;
-        if(Integer.valueOf(s,2)==0)
+        if(allZero(s))
             Interface.Z = true;
         if(s.length()<Interface.bit){
             return "0".repeat(Interface.bit - s.length())+s;
@@ -201,5 +202,13 @@ public class Operation {
         if(Interface.P)
             sb.append(" P ");
         return sb.toString();
+    }
+
+    boolean allZero(String s){
+        for(int i=0;i<s.length();i++){
+            if(s.charAt(i)!=0)
+                return false;
+        }
+        return true;
     }
 }

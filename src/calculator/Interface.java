@@ -279,6 +279,7 @@ public class Interface implements ActionListener {
             } else if (actionEvent.getSource().equals(clear)) {
                 input.setText("<html></html>");
                 output.setText("<html></html>");
+                sign.setText("<html></html>");
             } else if (actionEvent.getSource().equals(eightBit)) {
                 bit = 8;
             } else if (actionEvent.getSource().equals(sixteenBit)) {
