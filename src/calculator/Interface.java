@@ -91,9 +91,9 @@ public class Interface implements ActionListener {
         JLabel label2 = new JLabel("输入:");
         JLabel label3 = new JLabel("标志:");
         //设置文字字体
-        label1.setFont(new java.awt.Font("黑体", Font.BOLD,36));//设置字体为黑体，字体大小为36
-        label2.setFont(new java.awt.Font("黑体", Font.BOLD,36));//设置字体为黑体，字体大小为36
-        label3.setFont(new java.awt.Font("黑体", Font.BOLD,15));//设置字体为黑体，字体大小为36
+        label1.setFont(new Font("黑体", Font.BOLD,36));//设置字体为黑体，字体大小为36
+        label2.setFont(new Font("黑体", Font.BOLD,36));//设置字体为黑体，字体大小为36
+        label3.setFont(new Font("黑体", Font.BOLD,15));//设置字体为黑体，字体大小为36
 
         //设置按钮字体
         zero.setFont(buttonFont);
@@ -196,6 +196,40 @@ public class Interface implements ActionListener {
         box.add(p1);
         box.add(p2);
         box.add(p3);
+        /*box.addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+                System.out.println(e.getKeyChar());
+            }
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+                System.out.println(e.getKeyChar());
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+                System.out.println(e.getKeyChar());
+                switch (e.getKeyChar()){
+                    case '0':{
+                        ifHasOutputAndSign();
+                        StringBuilder s = new StringBuilder(input.getText());
+                        int i = s.indexOf("</html>");
+                        s.insert(i, "0");
+                        input.setText(s.toString());
+                        break;
+                    }
+                    case '1':{
+                        ifHasOutputAndSign();
+                        StringBuilder s = new StringBuilder(input.getText());
+                        int i = s.indexOf("</html>");
+                        s.insert(i, "1");
+                        input.setText(s.toString());
+                        break;
+                    }
+                }
+            }
+        });*/
         jFrame.add(box);
 
         //设置界面大小
@@ -205,6 +239,7 @@ public class Interface implements ActionListener {
         jFrame.setLocationRelativeTo(null);
         //设置可见
         jFrame.setVisible(true);
+        jFrame.requestFocus();
         jFrame.validate();
         //jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         //设置点击"×"健时什么也不做

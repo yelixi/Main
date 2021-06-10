@@ -24,14 +24,14 @@ public class Operation {
     }
 
     public String operation(List<String> list) {
-        for (int i=0;i<list.size();i++) {
-            String s = list.get(i);
+        for (String s : list) {
             if (s.startsWith("0") || s.startsWith("1")) {
-                if(s.startsWith("1")){
+                /*if(s.startsWith("1")){
                     list.remove(s);
                     list.add(i,s.replaceFirst("1","-"));
                 }
-                else if (s.length() > Interface.bit)
+                else */
+                if (s.length() > Interface.bit)
                     throw new RuntimeException(s + "超过了" + Interface.bit + "位数的限制");
                 else if (s.length() < Interface.bit)
                     throw new RuntimeException(s + "小于" + Interface.bit + "位数的限制");
@@ -122,8 +122,14 @@ public class Operation {
     }
 
     String add(String s1,String s2){
+        if(s1.startsWith("1"))
+            s1 = s1.replaceFirst("1","-");
+        if(s2.startsWith("1"))
+            s2 = s2.replaceFirst("1","-");
         int a = Integer.parseInt(Integer.valueOf(s1,2).toString());
         int b = Integer.parseInt(Integer.valueOf(s2,2).toString());
+        System.out.println("a="+a);
+        System.out.println("b="+b);
         try {
             int result = a + b;
             if (result > map.get(Interface.bit/2))
@@ -142,6 +148,10 @@ public class Operation {
     }
 
     String reduce(String s1,String s2){
+        if(s1.startsWith("1"))
+            s1 = s1.replaceFirst("1","-");
+        if(s2.startsWith("1"))
+            s2 = s2.replaceFirst("1","-");
         int a = Integer.parseInt(Integer.valueOf(s1,2).toString());
         int b = Integer.parseInt(Integer.valueOf(s2,2).toString());
         try {
