@@ -173,11 +173,13 @@ public class Operation {
 
     //补码
     String comp(String s){
+        System.out.println(s);
         if(s.startsWith("0"))
             return s;
         else{
-            return add(s.replaceAll("0","2").replaceAll("1","0")
-                    .replaceAll("2","1").replaceFirst("0","1"),"1");
+            String str = "00000000000000000000000000000001";
+            return add(s.replaceAll("-","1").replaceAll("0","2").replaceAll("1","0")
+                    .replaceAll("2","1").replaceFirst("0","1"),str);
         }
     }
 
