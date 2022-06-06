@@ -123,7 +123,7 @@ public class Interface implements ActionListener {
         thirtyTwoBit.addActionListener(this);
         comp.addActionListener(this);
 
-        /*
+        /**
          * 在第一个中间容器中定义盒式布局，将文字与{@link output}水平排布
          */
         Box box1 = Box.createHorizontalBox();
