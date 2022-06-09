@@ -11,6 +11,13 @@ public class Operation {
     //对传入的list进行计算
     String operation(List<String> list){
         String res = "";
+        if(list.size()==1)
+            return list.get(0);
+        else if(list.size()==2){
+            if(list.get(1).equals("+")||list.get(1).equals("*")||list.get(1).equals("/")
+            ||list.get(1).equals("OR")||list.get(1).equals("XOR")||list.get(1).equals("AND")||list.get(1).equals("SHF"))
+                throw new RuntimeException("操作异常");
+        }
         switch (list.get(1)){
             case "+": res = add(list.get(0),list.get(2)); break;
             case "-": res = reduce(list.get(0),list.get(2));break;
@@ -20,6 +27,7 @@ public class Operation {
             case "XOR": res = xor(list.get(0),list.get(2));break;
             case "AND": res = and(list.get(0),list.get(2));break;
             case "SHF": res = shf(list.get(0),list.get(2));break;
+            default: res = reduce(list.get(0),list.get(1));break;
         }
         return res;
     }
@@ -47,12 +55,16 @@ public class Operation {
         if(Interface.bit==10) {
             a = Integer.parseInt(s1);
             b = Integer.parseInt(s2);
-            return String.valueOf(a-b);
+            if(b>0)
+                return String.valueOf(a-b);
+            else return String.valueOf(a+b);
         }
         else if(Interface.bit==16){
             a = Integer.parseInt(Integer.valueOf(s1, 16).toString());
             b = Integer.parseInt(Integer.valueOf(s2, 16).toString());
-            return Integer.toHexString(a-b);
+            if(b>0)
+                return Integer.toHexString(a-b);
+            else return String.valueOf(a+b);
         }
         return "0";
     }
@@ -149,7 +161,9 @@ public class Operation {
         else if(Interface.bit==16){
             a = Integer.parseInt(Integer.valueOf(s1, 16).toString());
             b = Integer.parseInt(Integer.valueOf(s2, 16).toString());
-            return Integer.toHexString(a<<b);
+            if(b>=0)
+                return Integer.toHexString(a<<b);
+            else return Integer.toHexString(a>>-b);
         }
         return "0";
     }

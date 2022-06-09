@@ -6,9 +6,7 @@ import java.util.Scanner;
  */
 public class Main{
     public static void main(String[] args) {
-       String s = "";
-        System.out.println(Integer.valueOf(s,2).toString());
-        int a = -65535;
-        System.out.println(Integer.toBinaryString(a));
+       int a=0xff,b=2;
+
     }
 }

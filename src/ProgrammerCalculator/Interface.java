@@ -239,7 +239,7 @@ public class Interface implements ActionListener {
         p1.add(box1);
 
         //设置主面板布局格式
-        JFrame jFrame = new JFrame("二进制计算器");
+        JFrame jFrame = new JFrame("计算器");
         JPanel jPanel = new JPanel();
         jPanel.setLayout(new BorderLayout());
         //将中间容器p1放在最上方
@@ -408,7 +408,7 @@ public class Interface implements ActionListener {
                 ifHasOutputAndSign();
                 StringBuilder s = new StringBuilder(input.getText());
                 int i = s.indexOf("</html>");
-                s.insert(i, " - ");
+                s.insert(i, " -");
                 input.setText(s.toString());
             } else if (actionEvent.getSource().equals(multiply)) {
                 ifHasOutputAndSign();
@@ -460,6 +460,7 @@ public class Interface implements ActionListener {
                 int i = sb.indexOf("</html>");
                 sb.insert(i, operation.addAndReduce(s));
                 input.setText(sb.toString());
+                hasOutput = true;
             } else if (actionEvent.getSource().equals(SHF)) {
                 /**
                  * 移位操作
@@ -513,7 +514,7 @@ public class Interface implements ActionListener {
                 //进行运算
                 StringBuilder sb = new StringBuilder("<html></html>");
                 int i = sb.indexOf("</html>");
-                sb.insert(i, operation.operation(list));
+                sb.insert(i, operation.operation(list).replaceAll("a","A").replaceAll("e","E").replaceAll("f","F"));
                 input.setText(sb.toString());
                 //将是否进行计算标志置为true
                 hasOutput = true;
